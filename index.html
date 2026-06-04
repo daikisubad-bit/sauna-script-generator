@@ -45,13 +45,10 @@
   select option { background: var(--bg3); }
   textarea { resize: vertical; min-height: 56px; line-height: 1.6; }
 
-  /* 自動取得エリア */
   .auto-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; }
   .auto-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
   .auto-desc { font-size: 12px; color: var(--text2); margin-bottom: 1rem; line-height: 1.6; }
   .step-row { margin-bottom: 1rem; }
-  .step-label { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-  .step-label .badge { background: var(--accent); color: #0a0e14; font-size: 10px; padding: 1px 7px; border-radius: 10px; }
   .search-row { display: flex; gap: 8px; }
   .search-row input { flex: 1; }
   .search-btn { padding: 8px 18px; background: var(--accent); color: #0a0e14; border: none; border-radius: var(--radius-sm); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
@@ -78,14 +75,25 @@
   .output-area { display: none; margin-top: 2rem; }
   .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
   .char-badge { font-size: 11px; color: var(--text3); background: var(--bg3); padding: 3px 10px; border-radius: 20px; border: 1px solid var(--border); }
-  .output-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 1.5rem; font-size: 14px; line-height: 2; color: var(--text); white-space: pre-wrap; word-break: break-all; position: relative; }
-  .output-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: var(--radius) var(--radius) 0 0; }
-  .btn-row { display: flex; gap: 8px; margin-top: 1rem; }
+  .output-wrap { position: relative; }
+  .output-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: var(--radius) var(--radius) 0 0; pointer-events: none; z-index: 1; }
+  .output-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 1.5rem; padding-top: 1.75rem; font-size: 14px; line-height: 2; color: var(--text); word-break: break-all; width: 100%; min-height: 200px; resize: vertical; font-family: 'Noto Sans JP', sans-serif; outline: none; }
+  .output-box:focus { border-color: var(--accent2); }
+  .edit-hint { font-size: 11px; color: var(--text3); margin-top: 5px; }
+  .btn-row { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
   .copy-btn, .reset-btn { padding: 9px 18px; border-radius: var(--radius-sm); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; }
   .copy-btn { background: var(--accent); color: #0a0e14; border: none; font-weight: 700; }
   .copy-btn:hover { background: #62d4b3; }
   .reset-btn { background: transparent; color: var(--text2); border: 1px solid var(--border2); }
   .reset-btn:hover { background: var(--bg3); color: var(--text); }
+  .revise-area { margin-top: 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
+  .revise-label { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
+  .revise-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; padding: 8px 12px; outline: none; resize: vertical; min-height: 52px; transition: border-color 0.2s; }
+  .revise-input:focus { border-color: var(--accent2); }
+  .revise-input::placeholder { color: var(--text3); font-size: 12px; }
+  .revise-btn { margin-top: 8px; padding: 8px 18px; background: var(--bg3); color: var(--accent); border: 1px solid var(--border2); border-radius: var(--radius-sm); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+  .revise-btn:hover { background: rgba(79,195,161,0.1); }
+  .revise-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .required { color: var(--accent3); font-size: 10px; margin-left: 4px; }
   @media (max-width: 600px) {
     .header { padding: 1.5rem 1rem; } .main { padding: 1.5rem 1rem; }
@@ -106,11 +114,10 @@
 
 <div class="main">
 
-  <!-- 自動取得 -->
   <div class="section">
     <div class="section-label">施設情報の自動取得</div>
     <div class="auto-box">
-      <div class="auto-title">STEP 1 ── 公式サイトURLから取得</div>
+      <div class="auto-title">STEP 1 ── 公式サイトURLから取得 <span style="font-size:11px;font-weight:400;color:var(--text3);">※サイトによっては取得できない場合があります</span></div>
       <div class="auto-desc">公式サイトのURLを入力すると、料金・営業時間・設備情報を自動で抽出してフォームに入力します。</div>
       <div class="step-row">
         <div class="search-row">
@@ -121,8 +128,8 @@
 
       <div class="divider">または</div>
 
-      <div class="auto-title">STEP 2 ── 施設名からサウナイキタイ情報を取得</div>
-      <div class="auto-desc">施設名を入力すると、Claudeの知識＋Web検索でサウナイキタイの情報を取得してフォームに入力します。</div>
+      <div class="auto-title">STEP 2 ── 施設名からサウナイキタイ情報を取得 <span style="font-size:11px;font-weight:700;color:var(--accent);background:rgba(79,195,161,0.12);padding:1px 7px;border-radius:4px;margin-left:4px;">推奨</span></div>
+      <div class="auto-desc">施設名を入力すると、Claudeの知識＋Web検索でサウナイキタイの情報を取得してフォームに入力します。<strong style="color:var(--accent);">こちらが主な使い方です。</strong></div>
       <div class="step-row">
         <div class="search-row">
           <input type="text" id="facility-name-search" placeholder="例：スパメッツァおおたか" />
@@ -134,7 +141,6 @@
     </div>
   </div>
 
-  <!-- 基本情報 -->
   <div class="section">
     <div class="section-label">基本情報</div>
     <div class="card">
@@ -161,7 +167,6 @@
     </div>
   </div>
 
-  <!-- フック -->
   <div class="section">
     <div class="section-label">フック（冒頭2秒）</div>
     <div class="card">
@@ -188,7 +193,6 @@
     </div>
   </div>
 
-  <!-- 温泉 -->
   <div class="section">
     <div class="section-label">温泉・お風呂</div>
     <div class="card">
@@ -210,7 +214,6 @@
     </div>
   </div>
 
-  <!-- サウナ -->
   <div class="section">
     <div class="section-label">サウナ</div>
     <div class="card">
@@ -258,7 +261,6 @@
     </div>
   </div>
 
-  <!-- 隠れた魅力 -->
   <div class="section">
     <div class="section-label">隠れた魅力（中盤ギャップ）</div>
     <div class="card">
@@ -283,7 +285,6 @@
     </div>
   </div>
 
-  <!-- ターゲット -->
   <div class="section">
     <div class="section-label">ターゲット・フォロー訴求</div>
     <div class="card">
@@ -318,10 +319,18 @@
       <div class="section-label" style="margin-bottom:0; flex:1;">生成された台本</div>
       <div class="char-badge" id="char-count">0文字</div>
     </div>
-    <div class="output-box" id="output-box"></div>
+    <div class="output-wrap">
+      <textarea class="output-box" id="output-box" spellcheck="false"></textarea>
+    </div>
+    <div class="edit-hint">※テキストボックス内を直接クリックして編集できます</div>
     <div class="btn-row">
       <button class="copy-btn" onclick="copyScript()">コピーする</button>
       <button class="reset-btn" onclick="resetOutput()">もう一度生成</button>
+    </div>
+    <div class="revise-area">
+      <div class="revise-label">AI修正リクエスト</div>
+      <textarea class="revise-input" id="revise-input" placeholder="例：フックをもっとインパクトのある表現に変えて / サウナ温度の部分を強調して / 全体をもう少し短くして"></textarea>
+      <button class="revise-btn" id="revise-btn" onclick="reviseScript()">この内容で修正する</button>
     </div>
   </div>
 
@@ -457,7 +466,7 @@ async function generateScript() {
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
     const text = data.script;
-    document.getElementById('output-box').textContent = text;
+    document.getElementById('output-box').value = text;
     document.getElementById('char-count').textContent = text.length + '文字';
     document.getElementById('output-area').style.display = 'block';
     document.getElementById('output-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -470,11 +479,50 @@ async function generateScript() {
 }
 
 function copyScript() {
-  navigator.clipboard.writeText(document.getElementById('output-box').textContent).then(() => {
+  navigator.clipboard.writeText(document.getElementById('output-box').value).then(() => {
     const btn = document.querySelector('.copy-btn');
     btn.textContent = 'コピーしました！';
     setTimeout(() => { btn.textContent = 'コピーする'; }, 2000);
   });
+}
+
+async function reviseScript() {
+  const currentScript = document.getElementById('output-box').value.trim();
+  const request = document.getElementById('revise-input').value.trim();
+  if (!currentScript) { alert('先に台本を生成してください'); return; }
+  if (!request) { alert('修正内容を入力してください'); return; }
+
+  const btn = document.getElementById('revise-btn');
+  btn.disabled = true;
+  btn.textContent = '修正中...';
+
+  const prompt = `以下のTikTok台本を修正してください。
+
+【現在の台本】
+${currentScript}
+
+【修正リクエスト】
+${request}
+
+修正後の台本だけを出力してください。説明や補足は不要です。`;
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: '修正', hookDetail: '修正', _rawPrompt: prompt })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    document.getElementById('output-box').value = data.script;
+    document.getElementById('char-count').textContent = data.script.length + '文字';
+    document.getElementById('revise-input').value = '';
+  } catch(e) {
+    alert('エラー: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'この内容で修正する';
+  }
 }
 
 function resetOutput() {
