@@ -1,0 +1,11 @@
+{
+  "name": "sauna-script-generator",
+  "version": "1.0.0",
+  "description": "温泉・サウナ台本ジェネレーター",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}
