@@ -126,10 +126,12 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: '施設名とフック詳細は必須です' });
     }
 
+    const promptText = data._rawPrompt || buildPrompt(data);
+
     const message = await client.messages.create({
       model: 'claude-sonnet-4-5',
       max_tokens: 1500,
-      messages: [{ role: 'user', content: buildPrompt(data) }]
+      messages: [{ role: 'user', content: promptText }]
     });
 
     const text = message.content
