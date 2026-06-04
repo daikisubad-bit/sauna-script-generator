@@ -45,35 +45,36 @@
   select option { background: var(--bg3); }
   textarea { resize: vertical; min-height: 56px; line-height: 1.6; }
 
-  /* 自動入力エリア */
-  .auto-fill-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; }
-  .auto-fill-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
-  .auto-fill-title .badge { font-size: 10px; padding: 2px 8px; background: rgba(79,195,161,0.1); border: 1px solid var(--border2); border-radius: 4px; font-weight: 500; }
-  .input-row { display: flex; gap: 8px; margin-bottom: 10px; }
-  .input-row input { flex: 1; }
-  .auto-btn { padding: 8px 16px; background: var(--accent); color: #0a0e14; border: none; border-radius: var(--radius-sm); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
-  .auto-btn:hover { background: #62d4b3; }
-  .auto-btn:disabled { background: var(--bg3); color: var(--text3); cursor: not-allowed; }
-  .divider { text-align: center; font-size: 11px; color: var(--text3); margin: 12px 0; position: relative; }
+  /* 自動取得エリア */
+  .auto-box { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem; }
+  .auto-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .auto-desc { font-size: 12px; color: var(--text2); margin-bottom: 1rem; line-height: 1.6; }
+  .auto-flow { display: flex; gap: 6px; align-items: center; font-size: 11px; color: var(--text3); margin-bottom: 1rem; flex-wrap: wrap; }
+  .auto-flow .step { background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 3px 10px; color: var(--text2); }
+  .auto-flow .arrow { color: var(--accent); }
+  .search-row { display: flex; gap: 8px; }
+  .search-row input { flex: 1; }
+  .search-btn { padding: 8px 18px; background: var(--accent); color: #0a0e14; border: none; border-radius: var(--radius-sm); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+  .search-btn:hover { background: #62d4b3; }
+  .search-btn:disabled { background: var(--bg3); color: var(--text3); cursor: not-allowed; }
+  .divider { text-align: center; font-size: 11px; color: var(--text3); margin: 14px 0; position: relative; }
   .divider::before, .divider::after { content: ''; position: absolute; top: 50%; width: 42%; height: 1px; background: var(--border); }
-  .divider::before { left: 0; }
-  .divider::after { right: 0; }
-  .paste-area { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 12px; padding: 10px 12px; outline: none; resize: vertical; min-height: 80px; line-height: 1.6; transition: border-color 0.2s; }
+  .divider::before { left: 0; } .divider::after { right: 0; }
+  .paste-area { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 12px; padding: 10px 12px; outline: none; resize: vertical; min-height: 70px; line-height: 1.6; transition: border-color 0.2s; }
   .paste-area:focus { border-color: var(--accent2); }
   .paste-area::placeholder { color: var(--text3); }
   .paste-btn { margin-top: 8px; padding: 8px 16px; background: transparent; color: var(--accent); border: 1px solid var(--border2); border-radius: var(--radius-sm); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; }
   .paste-btn:hover { background: var(--bg3); }
   .paste-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-  .status-msg { font-size: 12px; margin-top: 8px; padding: 8px 12px; border-radius: var(--radius-sm); display: none; }
-  .status-msg.loading { display: block; background: rgba(79,195,161,0.08); color: var(--accent); border: 1px solid var(--border); }
-  .status-msg.success { display: block; background: rgba(79,195,161,0.08); color: var(--accent); border: 1px solid var(--border2); }
-  .status-msg.error { display: block; background: rgba(233,196,106,0.08); color: var(--accent3); border: 1px solid rgba(233,196,106,0.2); }
+  .status-msg { font-size: 12px; margin-top: 10px; padding: 10px 14px; border-radius: var(--radius-sm); display: none; line-height: 1.6; }
+  .status-msg.loading { display: block; background: rgba(79,195,161,0.06); color: var(--accent); border: 1px solid var(--border); }
+  .status-msg.success { display: block; background: rgba(79,195,161,0.06); color: var(--accent); border: 1px solid var(--border2); }
+  .status-msg.error { display: block; background: rgba(233,196,106,0.06); color: var(--accent3); border: 1px solid rgba(233,196,106,0.2); }
 
-  .hook-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 2px 8px; background: rgba(79,195,161,0.1); color: var(--accent); border-radius: 4px; border: 1px solid var(--border2); margin-bottom: 10px; }
+  .hook-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; background: rgba(79,195,161,0.1); color: var(--accent); border-radius: 4px; border: 1px solid var(--border2); margin-bottom: 10px; }
   .follow-preview { background: var(--bg3); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 10px 14px; font-size: 12px; color: var(--text2); margin-top: 8px; line-height: 1.6; }
-  .generate-btn { width: 100%; padding: 15px; background: var(--accent); color: #0a0e14; border: none; border-radius: var(--radius); font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; margin-top: 1rem; transition: all 0.2s; }
+  .generate-btn { width: 100%; padding: 15px; background: var(--accent); color: #0a0e14; border: none; border-radius: var(--radius); font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 1rem; transition: all 0.2s; }
   .generate-btn:hover { background: #62d4b3; transform: translateY(-1px); }
-  .generate-btn:active { transform: translateY(0); }
   .generate-btn:disabled { background: var(--bg3); color: var(--text3); cursor: not-allowed; transform: none; }
   .loading-bar { display: none; text-align: center; padding: 2rem; color: var(--text2); font-size: 13px; }
   .loading-dots::after { content: ''; animation: dots 1.5s infinite; }
@@ -93,12 +94,9 @@
   .api-note { font-size: 11px; color: var(--text3); margin-top: 8px; padding: 10px 14px; background: var(--bg3); border-radius: var(--radius-sm); border: 1px solid var(--border); line-height: 1.6; }
   .api-note a { color: var(--accent); text-decoration: none; }
   @media (max-width: 600px) {
-    .header { padding: 1.5rem 1rem; }
-    .main { padding: 1.5rem 1rem; }
-    .field { grid-template-columns: 1fr; gap: 4px; }
-    .field-label { padding-top: 0; }
-    h1 { font-size: 20px; }
-    .input-row { flex-direction: column; }
+    .header { padding: 1.5rem 1rem; } .main { padding: 1.5rem 1rem; }
+    .field { grid-template-columns: 1fr; gap: 4px; } .field-label { padding-top: 0; }
+    h1 { font-size: 20px; } .search-row { flex-direction: column; }
   }
 </style>
 </head>
@@ -108,7 +106,7 @@
   <div class="header-inner">
     <div class="logo">Sauna & Onsen Script Generator</div>
     <h1>温泉・サウナ<span>台本ジェネレーター</span></h1>
-    <p class="subtitle">施設情報を入力するだけで、TikTok / YouTubeショート用の台本を自動生成します</p>
+    <p class="subtitle">施設名を入れるだけで公式サイト＋サウナイキタイから自動で情報を取得し台本を生成します</p>
   </div>
 </div>
 
@@ -125,31 +123,33 @@
         </div>
         <input type="text" id="api-key" placeholder="sk-ant-..." />
       </div>
-      <div class="api-note">
-        APIキーは <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> で取得できます。このファイルをローカルで使う場合、キーはブラウザのメモリにのみ保持されます。
-      </div>
+      <div class="api-note">APIキーは <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> で取得できます。</div>
     </div>
   </div>
 
-  <!-- 自動入力 -->
+  <!-- 自動取得 -->
   <div class="section">
-    <div class="section-label">施設情報の自動入力</div>
-    <div class="auto-fill-box">
-      <div class="auto-fill-title">
-        URLまたはテキストから自動でフォームを埋めます
-        <span class="badge">NEW</span>
+    <div class="section-label">施設情報の自動取得</div>
+    <div class="auto-box">
+      <div class="auto-title">施設名を入れるだけで自動入力</div>
+      <div class="auto-desc">公式サイトから料金・営業時間などの正確な情報を取得し、サウナイキタイから口コミ・特徴・雰囲気などの肉付け情報を取得してフォームに自動入力します。</div>
+      <div class="auto-flow">
+        <span class="step">施設名を入力</span>
+        <span class="arrow">→</span>
+        <span class="step">公式サイトで基本情報取得</span>
+        <span class="arrow">→</span>
+        <span class="step">サウナイキタイで特徴・口コミ取得</span>
+        <span class="arrow">→</span>
+        <span class="step">フォーム自動入力</span>
+      </div>
+      <div class="search-row">
+        <input type="text" id="facility-name-search" placeholder="施設名を入力（例：スパメッツァおおたか）" />
+        <button class="search-btn" id="search-btn" onclick="autoFetchFromName()">自動取得</button>
       </div>
 
-      <!-- URL入力 -->
-      <div class="input-row">
-        <input type="text" id="facility-url" placeholder="施設の公式サイトURLを入力（例：https://...）" />
-        <button class="auto-btn" id="url-btn" onclick="fetchFromUrl()">URLから取得</button>
-      </div>
+      <div class="divider">または施設ページのテキストを直接貼り付け</div>
 
-      <div class="divider">または施設ページのテキストを貼り付け</div>
-
-      <!-- テキスト貼り付け -->
-      <textarea class="paste-area" id="paste-text" placeholder="施設サイトのテキストをコピーしてここに貼り付けてください&#10;（施設名・料金・サウナ情報・営業時間など含むページが理想です）"></textarea>
+      <textarea class="paste-area" id="paste-text" placeholder="公式サイトやサウナイキタイのページテキストをコピーして貼り付けてください"></textarea>
       <button class="paste-btn" id="paste-btn" onclick="fillFromText()">テキストから自動入力</button>
 
       <div class="status-msg" id="status-msg"></div>
@@ -328,17 +328,12 @@
           <option value="discovery">発見系（知られざる名施設を掘り起こし中）</option>
         </select>
       </div>
-      <div class="follow-preview" id="follow-preview">
-        他にも関東の温泉・サウナ情報を発信しているので、気になる人はフォローしてみてね！
-      </div>
+      <div class="follow-preview" id="follow-preview">他にも関東の温泉・サウナ情報を発信しているので、気になる人はフォローしてみてね！</div>
     </div>
   </div>
 
   <button class="generate-btn" id="gen-btn" onclick="generateScript()">台本を生成する</button>
-
-  <div class="loading-bar" id="loading">
-    <span class="loading-dots">台本を生成中</span>
-  </div>
+  <div class="loading-bar" id="loading"><span class="loading-dots">台本を生成中</span></div>
 
   <div class="output-area" id="output-area">
     <div class="output-header">
@@ -362,13 +357,10 @@ const FOLLOW_PHRASES = {
 };
 
 function updateFollowPreview() {
-  const style = document.getElementById('follow-style').value;
-  document.getElementById('follow-preview').textContent = FOLLOW_PHRASES[style];
+  document.getElementById('follow-preview').textContent = FOLLOW_PHRASES[document.getElementById('follow-style').value];
 }
 
-function getApiKey() {
-  return document.getElementById('api-key').value.trim();
-}
+function getApiKey() { return document.getElementById('api-key').value.trim(); }
 
 function setStatus(msg, type) {
   const el = document.getElementById('status-msg');
@@ -376,14 +368,33 @@ function setStatus(msg, type) {
   el.className = 'status-msg ' + type;
 }
 
-function clearStatus() {
-  const el = document.getElementById('status-msg');
-  el.className = 'status-msg';
-  el.textContent = '';
+async function callClaude(userContent, useSearch) {
+  const apiKey = getApiKey();
+  if (!apiKey) { alert('APIキーを入力してください'); return null; }
+  const body = {
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 1500,
+    messages: [{ role: 'user', content: userContent }]
+  };
+  if (useSearch) {
+    body.tools = [{ type: 'web_search_20250305', name: 'web_search' }];
+  }
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-allow-browser': 'true'
+    },
+    body: JSON.stringify(body)
+  });
+  const json = await res.json();
+  if (json.error) throw new Error(json.error.message);
+  return json.content?.filter(b => b.type === 'text').map(b => b.text).join('') || '';
 }
 
 function setFormValues(data) {
-  const fields = ['name','area','price','hours','access','hook-detail','indoor-bath','outdoor-bath','bath-best','sauna-types','sauna-temp','water-temp','sauna-weak','sauna-best','hidden','unique'];
   const map = {
     'name': data.name, 'area': data.area, 'price': data.price,
     'hours': data.hours, 'access': data.access, 'hook-detail': data.hookDetail,
@@ -398,95 +409,96 @@ function setFormValues(data) {
   }
   if (data.mizugi === 'yes') document.getElementById('mizugi').value = 'yes';
   if (data.louhu) {
-    const louhuMap = { 'auto':'auto', 'self':'self', 'aufguss':'aufguss', 'multi':'multi', 'none':'none' };
-    if (louhuMap[data.louhu]) document.getElementById('louhu').value = louhuMap[data.louhu];
+    const m = { 'auto':'auto','self':'self','aufguss':'aufguss','multi':'multi','none':'none' };
+    if (m[data.louhu]) document.getElementById('louhu').value = m[data.louhu];
   }
 }
 
-const AUTO_FILL_PROMPT = `以下の施設情報テキストから、温泉・サウナ施設の情報を抽出してJSON形式で返してください。
+const EXTRACT_PROMPT = `以下の施設情報から温泉・サウナ施設の情報を抽出してJSONで返してください。
 
-抽出する項目：
-- name: 施設名
-- area: エリア・最寄り駅
-- price: 料金（平日・土日・セット料金など）
-- hours: 営業時間
-- access: アクセス補足（シャトルバス・駐車場など）
-- hookDetail: この施設の一番インパクトある特徴（受賞歴・日本一・規模・絶景・ユニーク体験など数字や実績を含む形で）
-- indoorBath: 内湯の種類
-- outdoorBath: 露天風呂の種類
-- bathBest: 温泉のイチオシとその理由
-- saunaTypes: サウナの種類・数
-- saunaTemp: サウナ温度
-- waterTemp: 水風呂温度
-- louhu: ロウリュの種類（none/auto/self/aufguss/multiのいずれか）
-- saunaWeak: サウナの弱点（わからなければ空文字）
-- saunaBest: サウナのイチオシ
-- hidden: 隠れた魅力・追加施設（岩盤浴・コワーキング・絶景テラスなど）
-- unique: 絶景・ユニーク体験
-- mizugi: 水着エリアの有無（yes/no）
+【重要な優先順位】
+- 料金・営業時間・サウナ種類・温度などの数字は公式情報を優先
+- 雰囲気・特徴・口コミ由来の表現はサウナイキタイの情報を優先
+- hookDetailには「この施設の一番インパクトある特徴」を受賞歴・日本一・規模・絶景・ユニーク体験など具体的な数字や実績を含む形で
 
-不明な項目は空文字にしてください。
-JSONのみ返してください。説明・マークダウン不要。
+抽出項目（不明は空文字）：
+name, area, price, hours, access, hookDetail, indoorBath, outdoorBath, bathBest, saunaTypes, saunaTemp, waterTemp, louhu(none/auto/self/aufguss/multi), saunaWeak, saunaBest, hidden, unique, mizugi(yes/no)
 
-施設情報テキスト：
+JSONのみ返してください。
+
+施設情報：
 `;
 
-async function callClaude(userContent) {
-  const apiKey = getApiKey();
-  if (!apiKey) { alert('APIキーを入力してください'); return null; }
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-allow-browser': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
-      messages: [{ role: 'user', content: userContent }]
-    })
-  });
-  const json = await res.json();
-  if (json.error) throw new Error(json.error.message);
-  return json.content?.map(b => b.text || '').join('') || '';
-}
-
-async function fetchFromUrl() {
-  const url = document.getElementById('facility-url').value.trim();
-  if (!url) { alert('URLを入力してください'); return; }
+async function autoFetchFromName() {
+  const facilityName = document.getElementById('facility-name-search').value.trim();
+  if (!facilityName) { alert('施設名を入力してください'); return; }
   if (!getApiKey()) { alert('APIキーを入力してください'); return; }
 
-  const btn = document.getElementById('url-btn');
+  const btn = document.getElementById('search-btn');
   btn.disabled = true;
-  setStatus('URLから情報を取得中...', 'loading');
+  setStatus('① 公式サイトから基本情報を取得中...', 'loading');
 
   try {
-    const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
-    const res = await fetch(proxyUrl);
-    const data = await res.json();
+    const prompt = `「${facilityName}」という温泉・サウナ施設について以下の2ステップで情報収集してください。
 
-    if (!data.contents) throw new Error('CORS_ERROR');
+ステップ1：公式サイトを検索して以下の正確な情報を取得
+- 施設名、所在地、最寄り駅
+- 料金（平日・土日・各種セット料金）
+- 営業時間
+- アクセス（シャトルバス・駐車場など）
+- 温泉・お風呂の種類（内湯・露天）
+- サウナの種類・数・温度
+- 水風呂の温度
+- ロウリュの有無・種類
+- その他設備（岩盤浴・食事処・コワーキングなど）
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(data.contents, 'text/html');
-    const scripts = doc.querySelectorAll('script, style, nav, footer, header');
-    scripts.forEach(el => el.remove());
-    const text = doc.body?.innerText || doc.body?.textContent || '';
-    const cleaned = text.replace(/\s+/g, ' ').trim().slice(0, 4000);
+ステップ2：サウナイキタイ（sauna-ikitai.com）でこの施設を検索して以下を取得
+- 利用者の口コミから見えるこの施設の特徴・魅力
+- サウナ・水風呂・整いスペースの雰囲気や評判
+- 他にない独自の体験・絶景・ユニークポイント
+- 弱点として挙げられている点
 
-    if (!cleaned || cleaned.length < 100) throw new Error('CORS_ERROR');
+収集した情報を以下のJSON形式で返してください。
+公式情報を優先しつつ、サウナイキタイの口コミで肉付けしてください。
 
-    setStatus('情報を解析中...', 'loading');
-    await parseAndFill(cleaned);
+{
+  "name": "",
+  "area": "",
+  "price": "",
+  "hours": "",
+  "access": "",
+  "hookDetail": "（この施設の一番インパクトある特徴を数字・実績込みで）",
+  "indoorBath": "",
+  "outdoorBath": "",
+  "bathBest": "（口コミベースのイチオシ理由を感情込みで）",
+  "saunaTypes": "",
+  "saunaTemp": "",
+  "waterTemp": "",
+  "louhu": "none/auto/self/aufguss/multiのいずれか",
+  "saunaWeak": "（口コミで挙げられている弱点。なければ空文字）",
+  "saunaBest": "（口コミベースのサウナのイチオシ）",
+  "hidden": "（岩盤浴・コワーキング・絶景テラスなど隠れた魅力）",
+  "unique": "（絶景・ユニーク体験）",
+  "mizugi": "yes or no"
+}
+
+JSONのみ返してください。説明不要。`;
+
+    setStatus('① 公式サイトから基本情報を取得中...', 'loading');
+    const result = await callClaude(prompt, true);
+    if (!result) return;
+
+    setStatus('② サウナイキタイから口コミ・特徴を取得中...', 'loading');
+
+    const cleaned = result.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+    setFormValues(parsed);
+    setStatus('✓ 自動入力が完了しました！内容を確認して必要であれば修正してください。', 'success');
+    document.getElementById('name').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
   } catch(e) {
-    if (e.message === 'CORS_ERROR' || e.message.includes('fetch')) {
-      setStatus('このサイトはURLから直接取得できませんでした。下の「テキストを貼り付け」をお試しください。', 'error');
-    } else {
-      setStatus('エラー: ' + e.message, 'error');
-    }
+    setStatus('エラーが発生しました。施設名を確認するか、テキスト貼り付けをお試しください。', 'error');
+    console.error(e);
   } finally {
     btn.disabled = false;
   }
@@ -496,29 +508,22 @@ async function fillFromText() {
   const text = document.getElementById('paste-text').value.trim();
   if (!text) { alert('テキストを貼り付けてください'); return; }
   if (!getApiKey()) { alert('APIキーを入力してください'); return; }
-
   const btn = document.getElementById('paste-btn');
   btn.disabled = true;
   setStatus('テキストを解析中...', 'loading');
-
   try {
-    await parseAndFill(text);
+    const result = await callClaude(EXTRACT_PROMPT + text, false);
+    if (!result) return;
+    const cleaned = result.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+    setFormValues(parsed);
+    setStatus('✓ 自動入力が完了しました！内容を確認して必要であれば修正してください。', 'success');
+    document.getElementById('name').scrollIntoView({ behavior: 'smooth', block: 'center' });
   } catch(e) {
-    setStatus('エラー: ' + e.message, 'error');
+    setStatus('エラーが発生しました。もう一度お試しください。', 'error');
   } finally {
     btn.disabled = false;
   }
-}
-
-async function parseAndFill(text) {
-  const result = await callClaude(AUTO_FILL_PROMPT + text);
-  if (!result) return;
-
-  const cleaned = result.replace(/```json|```/g, '').trim();
-  const parsed = JSON.parse(cleaned);
-  setFormValues(parsed);
-  setStatus('自動入力が完了しました！内容を確認して必要であれば修正してください。', 'success');
-  document.getElementById('name').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function buildPrompt(d) {
@@ -532,7 +537,7 @@ function buildPrompt(d) {
 
 【台本の構成ルール】
 1. フック（冒頭2秒）
-　以下のパターンから施設に合うものを使う。数字・実績・体験を必ず入れる
+　数字・実績・体験を必ず入れる。以下パターンから施設に合うものを使う
 　- 受賞系：「〇〇で全国1位を取ったことがある、〇〇を紹介」
 　- 規模系：「日本最大級、〇〇円から楽しめる〇〇を紹介」
 　- 体験系：「男女水着でサウナを楽しめる〇〇を紹介」
@@ -551,11 +556,11 @@ function buildPrompt(d) {
 　弱点がある場合：「ただ、〇〇なのでサウナ目的で来る人は要注意」と正直に1つ言い
 　「でも/ただそれを超えるすごさが〜」で必ず逆転させる
 
-6. フォロー訴求（必ずここに入れる）：
+6. フォロー訴求（必ずここに挿入）：
 　「${d.followPhrase}」
 　サウナの話が終わり、隠れた魅力に入る直前のタイミングで自然に挿入
 
-7. 隠れた魅力：「でも実はすごいのが〇階で〜」「さらに外には〜」で意外性を演出しギャップで視聴完了率を上げる
+7. 隠れた魅力：「でも実はすごいのが〇階で〜」「さらに外には〜」で意外性を演出
 
 8. ターゲット言及：「${d.target}」に向けた一言を自然に入れる
 
@@ -574,33 +579,32 @@ function buildPrompt(d) {
 - 数字（温度・料金・種類数）は必ず入れる
 - 施設名はクロージングで必ず再読み上げする
 
-【TikTok攻略ナレッジ（台本に反映すること）】
-- 冒頭2秒でスワイプされないよう、施設の一番インパクトある要素を即出し
+【TikTok攻略ナレッジ】
+- 冒頭2秒でスワイプされないよう施設の一番インパクトある要素を即出し
 - 中盤に「でも実はすごいのが〜」のギャップを必ず作り離脱を防ぐ
 - 弱点を正直に言うことで「わかる！」の共感→シェア・いいねを誘う
-- 「サウナ目的の人は要注意」「カップルにもおすすめ」など視聴者を呼び込む言葉を仕込む
 - フォロー訴求は視聴者の関心が高まった中盤タイミングに入れる
 
 【施設情報】
 施設名：${d.name}
-エリア・最寄り：${d.area || '未入力'}
-料金：${d.price || '未入力'}
-営業時間：${d.hours || '未入力'}
-アクセス補足：${d.access || 'なし'}
+エリア・最寄り：${d.area||'未入力'}
+料金：${d.price||'未入力'}
+営業時間：${d.hours||'未入力'}
+アクセス補足：${d.access||'なし'}
 フックの種類：${d.hookType}
 フック詳細：${d.hookDetail}
-内湯：${d.indoorBath || '未入力'}
-露天風呂：${d.outdoorBath || '未入力'}
-温泉のイチオシ：${d.bathBest || '未入力'}
-サウナ種類：${d.saunaTypes || '未入力'}
-サウナ温度：${d.saunaTemp || '未入力'}
-水風呂温度：${d.waterTemp || '未入力'}
+内湯：${d.indoorBath||'未入力'}
+露天風呂：${d.outdoorBath||'未入力'}
+温泉のイチオシ：${d.bathBest||'未入力'}
+サウナ種類：${d.saunaTypes||'未入力'}
+サウナ温度：${d.saunaTemp||'未入力'}
+水風呂温度：${d.waterTemp||'未入力'}
 ロウリュ：${d.louhu}
 整いスペース：${d.totonoi}
-サウナの弱点：${d.saunaWeak || 'なし'}
-サウナのイチオシ：${d.saunaBest || '未入力'}
-隠れた魅力：${d.hidden || '未入力'}
-絶景・ユニーク体験：${d.unique || 'なし'}
+サウナの弱点：${d.saunaWeak||'なし'}
+サウナのイチオシ：${d.saunaBest||'未入力'}
+隠れた魅力：${d.hidden||'未入力'}
+絶景・ユニーク体験：${d.unique||'なし'}
 水着エリア：${d.mizugi}
 ターゲット：${d.target}
 
@@ -611,15 +615,13 @@ async function generateScript() {
   const apiKey = getApiKey();
   const name = document.getElementById('name').value.trim();
   const hookDetail = document.getElementById('hook-detail').value.trim();
-
   if (!apiKey) { alert('APIキーを入力してください'); return; }
   if (!name) { alert('施設名を入力してください'); return; }
   if (!hookDetail) { alert('フック詳細を入力してください'); return; }
 
   const followStyle = document.getElementById('follow-style').value;
   const d = {
-    name, apiKey,
-    area: document.getElementById('area').value,
+    name, area: document.getElementById('area').value,
     price: document.getElementById('price').value,
     hours: document.getElementById('hours').value,
     access: document.getElementById('access').value,
@@ -648,7 +650,7 @@ async function generateScript() {
   document.getElementById('output-area').style.display = 'none';
 
   try {
-    const text = await callClaude(buildPrompt(d));
+    const text = await callClaude(buildPrompt(d), false);
     if (!text) return;
     document.getElementById('output-box').textContent = text;
     document.getElementById('char-count').textContent = text.length + '文字';
@@ -663,12 +665,10 @@ async function generateScript() {
 }
 
 function copyScript() {
-  const text = document.getElementById('output-box').textContent;
-  navigator.clipboard.writeText(text).then(() => {
+  navigator.clipboard.writeText(document.getElementById('output-box').textContent).then(() => {
     const btn = document.querySelector('.copy-btn');
-    const orig = btn.textContent;
     btn.textContent = 'コピーしました！';
-    setTimeout(() => { btn.textContent = orig; }, 2000);
+    setTimeout(() => { btn.textContent = 'コピーする'; }, 2000);
   });
 }
 
@@ -677,6 +677,5 @@ function resetOutput() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
-
 </body>
 </html>
